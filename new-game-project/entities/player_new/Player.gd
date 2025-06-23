@@ -11,9 +11,7 @@ extends CharacterBody3D
 @export var max_walk_speed: float = 8.0
 @export var max_run_speed: float = 12.0
 @export var acceleration: float = 50.0
-@export var friction: float = 25.0
 @export var air_acceleration: float = 15.0
-@export var air_friction: float = 0.98
 
 # Wall jump mechanics from second file
 const WALL_JUMP_VELOCITY = 1.0
@@ -107,7 +105,7 @@ func handle_movement(delta):
 		else:
 			# Decelerate when no input
 			var horizontal_velocity = Vector3(velocity.x, 0, velocity.z)
-			horizontal_velocity = horizontal_velocity.move_toward(Vector3.ZERO, friction * delta)
+			horizontal_velocity = horizontal_velocity.move_toward(Vector3.ZERO, acceleration * delta)
 			velocity.x = horizontal_velocity.x
 			velocity.z = horizontal_velocity.z
 	else:
@@ -149,11 +147,7 @@ func update_state():
 		current_state = AIR
 
 func apply_friction(delta):
-	# Apply different friction based on state
-	if current_state == AIR:
-		velocity.x *= air_friction
-		velocity.z *= air_friction
-	elif current_state == WALL:
+	if current_state == WALL:
 		velocity.y *= WALL_FRICTION
 
 func _input(event):
