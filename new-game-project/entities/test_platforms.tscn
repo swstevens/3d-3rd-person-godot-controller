@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ds1flstwtl7et"]
 
-[ext_resource type="PackedScene" uid="uid://bxh4114aiqm6i" path="res://entities/player.tscn" id="1_atr4g"]
+[ext_resource type="PackedScene" uid="uid://om4gm3wbxoiu" path="res://entities/player_new/Player.tscn" id="1_atr4g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_atr4g"]
 size = Vector3(100, 0.1, 100)
@@ -36,9 +36,6 @@ size = Vector2(100, 50)
 orientation = 2
 
 [node name="Node3D" type="Node3D"]
-
-[node name="playet" parent="." instance=ExtResource("1_atr4g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8423, 0)
 
 [node name="floor" type="StaticBody3D" parent="."]
 
@@ -93,3 +90,6 @@ skeleton = NodePath("../..")
 [node name="OmniLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.914155, 0.405365, 0, -0.405365, 0.914155, 0, 42.4744, 0)
 light_energy = 2.219
+
+[node name="Player" parent="." instance=ExtResource("1_atr4g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2731, 1, -0.161777)
